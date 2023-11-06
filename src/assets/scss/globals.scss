@@ -1,0 +1,64 @@
+:root {
+	/*
+	 * Colors
+	 */
+	--color-base-bg: #fff;
+	--color-base-fg: #000;
+
+	--color-light-bg: #fff;
+	--color-light-fg: #000;
+	--color-light-inner-bg: #f6f6f7;
+	--color-light-border: rgba(14, 14, 14, 0.2);
+
+	--color-dark-bg: #1a1a1a;
+	--color-dark-fg: #fff;
+	--color-dark-inner-bg: #272727;
+	--color-dark-border: rgba(255, 255, 255, 0.2);
+
+	--color-primary-bg: #f06529;
+	--color-primary-hover-bg: #fa7f4a;
+	--color-primary-fg: #fff;
+
+	--color-secondary-bg: #1357da;
+	--color-secondary-hover-bg: #397bfb;
+	--color-secondary-fg: #fff;
+
+	// RGB переменные чтобы в коде была возможность задавать прозрачность цвету
+	--color-info-bg: #2b68de;
+	--color-info-fg: #fff;
+	--color-info-rgb: 43, 104, 222;
+
+	--color-success-bg: #89c74b;
+	--color-success-fg: #fff;
+	--color-success-rgb: 137, 199, 75;
+
+	--color-danger-bg: #ff2525;
+	--color-danger-fg: #fff;
+	--color-danger-rgb: 255, 37, 37;
+
+	/*
+	 * Font Family
+	 */
+	--font-family-base: var(--font-family-text);
+	--font-family-heading: 'Roobert PRO', sans-serif;
+	--font-family-text: 'SF Pro', system-ui, -apple-system, BlinkMacSystemFont,
+		'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans',
+		'Helvetica Neue', sans-serif;
+
+	/*
+	 * Font Size
+	 */
+	--font-size-base: 16px;
+
+	--font-size-h1: 54px;
+	--font-size-h1-desktop: 86px;
+	--font-size-h2: 38px;
+	--font-size-h2-desktop: 54px;
+	--font-size-h3: 28px;
+	--font-size-h3-desktop: 36px;
+
+	--font-size-text: 20px;
+	--font-size-button: 18px;
+	--font-size-field: 18px;
+	--font-size-label: 14px;
+}

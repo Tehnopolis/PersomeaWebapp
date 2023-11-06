@@ -1,0 +1,98 @@
+*,
+*::before,
+*::after {
+	margin: 0;
+	padding: 0;
+
+	font-size: inherit;
+	font-family: inherit;
+	color: inherit;
+
+	box-sizing: border-box;
+}
+
+html {
+	background: var(--color-base-bg);
+	color: var(--color-base-fg);
+
+	font-size: var(--font-size-base);
+	font-family: var(--font-family-base);
+}
+
+main {
+	display: flex;
+	flex-direction: column;
+}
+
+/*
+ * Headings
+ */
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	font-family: var(--font-family-heading);
+	line-height: 95%;
+	text-align: center;
+
+	& + p {
+		font-size: var(--font-size-text);
+	}
+}
+
+h1 {
+	font-size: var(--font-size-h1);
+
+	@media screen and (min-width: 768px) {
+		font-size: var(--font-size-h1-desktop);
+	}
+}
+h2 {
+	font-size: var(--font-size-h2);
+
+	@media screen and (min-width: 768px) {
+		font-size: var(--font-size-h2-desktop);
+	}
+}
+h3 {
+	font-size: var(--font-size-h3);
+
+	@media screen and (min-width: 768px) {
+		font-size: var(--font-size-h3-desktop);
+	}
+}
+
+/*
+ * Links
+ */
+a {
+	text-decoration: none;
+}
+
+/*
+ * Form elements
+ */
+button {
+	font-size: var(--font-size-button);
+}
+label {
+	font-size: var(--font-size-label);
+}
+
+input,
+textarea,
+select {
+	font-size: var(--font-size-field);
+}
+
+button,
+input,
+textarea,
+select {
+	border: none;
+	outline: none;
+
+	appearance: none;
+}
