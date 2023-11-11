@@ -7,20 +7,19 @@
 
 	--color-light-bg: #fff;
 	--color-light-fg: #000;
-	--color-light-inner-bg: #f6f6f7;
 	--color-light-border: rgba(14, 14, 14, 0.2);
+	--color-light-hover-border: #0e0e0e;
 
-	--color-dark-bg: #1a1a1a;
+	--color-dark-bg: #000;
 	--color-dark-fg: #fff;
-	--color-dark-inner-bg: #272727;
-	--color-dark-border: rgba(255, 255, 255, 0.2);
+	--color-dark-hover-bg: #1d1d1d;
 
 	--color-primary-bg: #f06529;
 	--color-primary-hover-bg: #fa7f4a;
 	--color-primary-fg: #fff;
 
-	--color-secondary-bg: #1357da;
-	--color-secondary-hover-bg: #397bfb;
+	--color-secondary-bg: #5951f2;
+	--color-secondary-hover-bg: #8781ff;
 	--color-secondary-fg: #fff;
 
 	// RGB переменные чтобы в коде была возможность задавать прозрачность цвету
@@ -58,7 +57,8 @@
 	--font-size-h3-desktop: 36px;
 
 	--font-size-text: 20px;
-	--font-size-button: 18px;
+	--font-size-medium-button: 18px;
+	--font-size-large-button: 24px;
 	--font-size-field: 18px;
 	--font-size-label: 14px;
 }
