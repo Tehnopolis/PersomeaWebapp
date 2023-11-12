@@ -22,6 +22,10 @@
 	--color-secondary-hover-bg: #8781ff;
 	--color-secondary-fg: #fff;
 
+	--color-card-icon-bg: #f6f6f7;
+	--color-card-title: #121212;
+	--color-card-description: #7b7b81;
+
 	// RGB переменные чтобы в коде была возможность задавать прозрачность цвету
 	--color-info-bg: #2b68de;
 	--color-info-fg: #fff;
@@ -34,6 +38,10 @@
 	--color-danger-bg: #ff2525;
 	--color-danger-fg: #fff;
 	--color-danger-rgb: 255, 37, 37;
+
+	--color-input-label: rgba(0, 0, 0, 0.2);
+	--color-input-border: rgba(14, 14, 14, 0.2);
+	--color-input-placeholder: rgba(0, 0, 0, 0.3);
 
 	/*
 	 * Font Family

@@ -9,9 +9,7 @@ defineProps<AppButtonProps>();
 
 const emit = defineEmits(['click']);
 
-function emitClick() {
-	emit('click');
-}
+const emitClick = () => emit('click');
 </script>
 
 <template>
@@ -64,6 +62,7 @@ function emitClick() {
 	}
 	&.color-outline {
 		border: 1px solid var(--color-light-border);
+		padding: 9px 18px !important;
 		background: var(--color-light-bg);
 		color: var(--color-light-fg);
 

@@ -1,6 +1,11 @@
 <script setup lang="ts">
 import AppButton from '@/components/AppButton.vue';
 import AppHeading from '@/components/AppHeading.vue';
+import AppInput from '@/components/AppInput.vue';
+import AppCard from '@/components/AppCard.vue';
+import { ref } from 'vue';
+
+const test = ref('');
 </script>
 
 <template>
@@ -49,6 +54,18 @@ import AppHeading from '@/components/AppHeading.vue';
 		>
 			Button / Large</AppButton
 		>
+		<AppInput
+			v-model="test"
+			label="Name"
+			placeholder="Placeholder"
+			right-icon="/icons/MagnifyingGlass.svg"
+			@btn-click="console.log('Button clicked!')"
+		/>
+		<AppCard
+			icon="/icons/MaskHappy.svg"
+			title="Heading"
+			description="Text text text text text text text text text text text"
+		/>
 	</section>
 </template>
 
