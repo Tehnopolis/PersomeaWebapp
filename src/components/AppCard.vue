@@ -10,20 +10,20 @@ defineProps<AppCardProps>();
 
 <template>
 	<div class="card">
-		<div class="icon_wrapper">
-			<img :src="icon" alt="icon" class="icon" />
+		<div class="card__icon-wrapper">
+			<img :src="icon" alt="icon" class="card__icon" />
 		</div>
-		<h3 class="title">{{ title }}</h3>
-		<p class="description">{{ description }}</p>
+		<h3 class="card__title">{{ title }}</h3>
+		<p class="card__description">{{ description }}</p>
 	</div>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 .card {
 	text-align: left !important;
 	max-width: 320px;
 
-	.icon_wrapper {
+	&__icon-wrapper {
 		padding: 12px;
 		border-radius: 10px;
 		opacity: 0.9;
@@ -33,13 +33,13 @@ defineProps<AppCardProps>();
 		max-width: 48px;
 		margin-bottom: 16px;
 
-		.icon {
+		&__icon {
 			width: 24px;
 			height: 24px;
 		}
 	}
 
-	.title {
+	&__title {
 		color: var(--color-card-title);
 		font-size: var(--font-size-text);
 		font-style: normal;
@@ -49,7 +49,7 @@ defineProps<AppCardProps>();
 		margin-bottom: 8px;
 	}
 
-	.description {
+	&__description {
 		color: var(--color-card-description);
 		font-size: var(--font-size-base);
 		font-style: normal;

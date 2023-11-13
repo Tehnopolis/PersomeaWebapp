@@ -21,15 +21,15 @@ p {
 	line-height: 95%;
 }
 h1 {
-	font-size: var(--font-size-h1-desktop);
+	font-size: var(--font-size-h1);
 	font-weight: 650;
 }
 h2 {
-	font-size: var(--font-size-h2-desktop);
+	font-size: var(--font-size-h2);
 	font-weight: 500;
 }
 h3 {
-	font-size: var(--font-size-h3-desktop);
+	font-size: var(--font-size-h3);
 	font-weight: 650;
 }
 p {
@@ -38,15 +38,15 @@ p {
 	line-height: 110%;
 }
 
-@media (max-width: 428px) {
+@media (min-width: 428px) {
 	h1 {
-		font-size: var(--font-size-h1);
+		font-size: var(--font-size-h1-desktop);
 	}
 	h2 {
-		font-size: var(--font-size-h2);
+		font-size: var(--font-size-h2-desktop);
 	}
 	h3 {
-		font-size: var(--font-size-h3);
+		font-size: var(--font-size-h3-desktop);
 	}
 }
 </style>

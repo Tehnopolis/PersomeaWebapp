@@ -7,16 +7,16 @@ interface AppButtonProps {
 
 defineProps<AppButtonProps>();
 
-const emit = defineEmits(['click']);
-
-const emitClick = () => emit('click');
+const emit = defineEmits<{
+	(event: 'click'): void;
+}>();
 </script>
 
 <template>
 	<button
-		:class="['button', `color-${color}`, `size-${size}`]"
+		:class="['button', `button--color-${color}`, `button--size-${size}`]"
 		:type="type"
-		@click="emitClick"
+		@click="emit('click')"
 	>
 		<slot></slot>
 	</button>
@@ -44,15 +44,15 @@ const emitClick = () => emit('click');
 	align-items: center;
 	gap: 8px;
 
-	&.size-m {
+	&--size-m {
 		font-size: var(--font-size-medium-button);
 	}
 
-	&.size-l {
+	&--size-l {
 		font-size: var(--font-size-large-button);
 	}
 
-	&.color-dark {
+	&--color-dark {
 		background: var(--color-dark-bg);
 		color: var(--color-dark-fg);
 
@@ -60,9 +60,9 @@ const emitClick = () => emit('click');
 			background: var(--color-dark-hover-bg);
 		}
 	}
-	&.color-outline {
+	&--color-outline {
 		border: 1px solid var(--color-light-border);
-		padding: 9px 18px !important;
+		padding: 9px 18px;
 		background: var(--color-light-bg);
 		color: var(--color-light-fg);
 
@@ -70,7 +70,7 @@ const emitClick = () => emit('click');
 			border: 1px solid var(--color-light-hover-border);
 		}
 	}
-	&.color-primary {
+	&--color-primary {
 		background: var(--color-primary-bg);
 		color: var(--color-primary-fg);
 
@@ -78,7 +78,7 @@ const emitClick = () => emit('click');
 			background: var(--color-primary-hover-bg);
 		}
 	}
-	&.color-secondary {
+	&--color-secondary {
 		background: var(--color-secondary-bg);
 		color: var(--color-secondary-fg);
 
