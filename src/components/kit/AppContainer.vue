@@ -13,5 +13,6 @@
 
 	display: flex;
 	flex-direction: column;
+	gap: 40px; /* Its not working on old Safari... */
 }
 </style>

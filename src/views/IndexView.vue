@@ -8,9 +8,7 @@ import AppButton from '../components/kit/AppButton.vue';
 	<AppSection tag="main">
 		<AppContainer>
 			<RouterLink to="/app">
-				<AppButton type="button" size="md" color="primary">
-					Перейти
-				</AppButton>
+				<AppButton size="md" color="primary"> Перейти </AppButton>
 			</RouterLink>
 		</AppContainer>
 	</AppSection>

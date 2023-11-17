@@ -10,12 +10,14 @@
 
 	display: inline-block;
 
-	padding: 10px 18px;
+	padding: 6px 12px;
 
 	border: 1px solid rgba(14, 14, 14, 0.2);
 	border-radius: 150px;
 
-	font-size: 16px;
+	font-size: 14px;
 	font-weight: 460;
+
+	opacity: 90%;
 }
 </style>

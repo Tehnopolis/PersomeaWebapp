@@ -1,9 +1,14 @@
 <script setup lang="ts">
-defineProps<{
-	type: 'button' | 'submit' | 'reset';
-	color: 'dark' | 'outline' | 'primary' | 'secondary';
-	size: 'md' | 'lg';
-}>();
+withDefaults(
+	defineProps<{
+		type?: 'button' | 'submit' | 'reset';
+		color: 'dark' | 'outline' | 'primary' | 'secondary';
+		size: 'md' | 'lg';
+	}>(),
+	{
+		type: 'button'
+	}
+);
 
 defineEmits<{
 	(event: 'click'): void;
