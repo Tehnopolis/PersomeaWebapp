@@ -4,6 +4,7 @@
 	 */
 	--color-base-bg: #fff;
 	--color-base-fg: #000;
+	--color-base-fg2: #121212;
 
 	--color-light-bg: #fff;
 	--color-light-fg: #000;
@@ -69,4 +70,9 @@
 	--font-size-large-button: 24px;
 	--font-size-field: 18px;
 	--font-size-label: 14px;
+
+	/*
+	 * Other
+	 */
+	--transition: 400ms ease;
 }

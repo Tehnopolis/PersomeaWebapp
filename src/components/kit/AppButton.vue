@@ -1,13 +1,11 @@
 <script setup lang="ts">
-interface AppButtonProps {
+defineProps<{
 	type: 'button' | 'submit' | 'reset';
 	color: 'dark' | 'outline' | 'primary' | 'secondary';
-	size: 'l' | 'm';
-}
+	size: 'md' | 'lg';
+}>();
 
-defineProps<AppButtonProps>();
-
-const emit = defineEmits<{
+defineEmits<{
 	(event: 'click'): void;
 }>();
 </script>
@@ -16,39 +14,42 @@ const emit = defineEmits<{
 	<button
 		:class="['button', `button--color-${color}`, `button--size-${size}`]"
 		:type="type"
-		@click="emit('click')"
+		@click="$emit('click')"
 	>
-		<slot></slot>
+		<slot />
 	</button>
 </template>
 
 <style scoped lang="scss">
 .button {
 	padding: 10px 18px;
-	cursor: pointer;
-	border-radius: 50px;
-	opacity: 90%;
-	transition:
-		background-color 400ms ease,
-		border-color 400ms ease,
-		color 400ms ease;
+
 	position: relative;
-	text-decoration: none;
-	border: none;
-	outline: none;
-	font-style: normal;
-	font-weight: 510;
-	line-height: 105%;
+
 	display: flex;
 	justify-content: center;
 	align-items: center;
 	gap: 8px;
 
-	&--size-m {
+	opacity: 90%;
+
+	border: none;
+	border-radius: 50px;
+	outline: none;
+
+	text-decoration: none;
+	font-style: normal;
+	font-weight: 510;
+	line-height: 105%;
+
+	cursor: pointer;
+	transition: var(--transition);
+	transition-property: background, border, color;
+
+	&--size-md {
 		font-size: var(--font-size-medium-button);
 	}
-
-	&--size-l {
+	&--size-lg {
 		font-size: var(--font-size-large-button);
 	}
 

@@ -1,9 +1,7 @@
 <script setup lang="ts">
-interface AppHeadingProps {
+defineProps<{
 	tag: 'h1' | 'h2' | 'h3' | 'p';
-}
-
-defineProps<AppHeadingProps>();
+}>();
 </script>
 
 <template>
@@ -12,7 +10,7 @@ defineProps<AppHeadingProps>();
 	</component>
 </template>
 
-<style scoped>
+<style scoped lang="scss">
 h1,
 h2,
 h3,
@@ -20,33 +18,34 @@ p {
 	font-style: normal;
 	line-height: 95%;
 }
+
 h1 {
 	font-size: var(--font-size-h1);
 	font-weight: 650;
+
+	@media (min-width: 768px) {
+		font-size: var(--font-size-h1-desktop);
+	}
 }
 h2 {
 	font-size: var(--font-size-h2);
 	font-weight: 500;
+
+	@media (min-width: 768px) {
+		font-size: var(--font-size-h2-desktop);
+	}
 }
 h3 {
 	font-size: var(--font-size-h3);
 	font-weight: 650;
+
+	@media (min-width: 768px) {
+		font-size: var(--font-size-h3-desktop);
+	}
 }
 p {
 	font-size: 20px;
 	font-weight: 510;
 	line-height: 110%;
-}
-
-@media (min-width: 428px) {
-	h1 {
-		font-size: var(--font-size-h1-desktop);
-	}
-	h2 {
-		font-size: var(--font-size-h2-desktop);
-	}
-	h3 {
-		font-size: var(--font-size-h3-desktop);
-	}
 }
 </style>

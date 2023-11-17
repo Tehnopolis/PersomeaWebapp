@@ -1,11 +1,12 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import TheNavbar from '@/components/TheNavbar.vue';
+import TheFooter from '@/components/TheFooter.vue';
+</script>
 
 <template>
-	<main>
-		<nav></nav>
-		<RouterView />
-		<footer></footer>
-	</main>
+	<TheNavbar />
+	<RouterView />
+	<TheFooter />
 </template>
 
 <style scoped lang="scss"></style>
