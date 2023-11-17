@@ -15,8 +15,6 @@ import AppContainer from './kit/AppContainer.vue';
 
 <style scoped lang="scss">
 .footer {
-	padding: 20px;
-
 	margin-top: auto;
 
 	border-top: 1px solid rgba(14, 14, 14, 0.2);

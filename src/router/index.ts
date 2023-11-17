@@ -8,6 +8,11 @@ export default function () {
 				name: 'IndexView',
 				path: '/',
 				component: () => import('@/views/IndexView.vue')
+			},
+			{
+				name: 'AppView',
+				path: '/app',
+				component: () => import('@/views/AppView.vue')
 			}
 		]
 	});

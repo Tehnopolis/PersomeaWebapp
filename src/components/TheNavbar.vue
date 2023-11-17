@@ -13,8 +13,6 @@ import AppContainer from './kit/AppContainer.vue';
 
 <style scoped lang="scss">
 .navbar {
-	padding: 20px;
-
 	&:deep(.container) {
 		align-items: center;
 		justify-content: center;

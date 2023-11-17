@@ -1,5 +1,17 @@
-<script setup lang="ts"></script>
+<script setup lang="ts">
+import AppSection from '@/components/kit/AppSection.vue';
+import AppContainer from '../components/kit/AppContainer.vue';
+import AppButton from '../components/kit/AppButton.vue';
+</script>
 
 <template>
-	<p>Hello</p>
+	<AppSection tag="main">
+		<AppContainer>
+			<RouterLink to="/app">
+				<AppButton type="button" size="md" color="primary">
+					Перейти
+				</AppButton>
+			</RouterLink>
+		</AppContainer>
+	</AppSection>
 </template>
