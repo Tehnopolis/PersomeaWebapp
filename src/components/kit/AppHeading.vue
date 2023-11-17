@@ -2,26 +2,30 @@
 import AppTag from './AppTag.vue';
 
 defineProps<{
-	tag: 'h1' | 'h2' | 'h3' | 'p';
-	bubbleText?: string;
+	size: 1 | 2 | 3;
+
+	tag?: string;
 	text?: string;
 }>();
 </script>
 
 <template>
-	<div class="heading">
-		<AppTag v-if="!!bubbleText" class="heading__tag">
-			{{ bubbleText }}
+	<hgroup class="heading">
+		<!-- Tag -->
+		<AppTag v-if="!!tag" class="heading__tag">
+			{{ tag }}
 		</AppTag>
 
-		<component :is="tag">
+		<!-- Heading -->
+		<component :is="`h${size}`">
 			<slot />
 		</component>
 
+		<!-- Text -->
 		<p v-if="!!text" class="heading__text">
 			{{ text }}
 		</p>
-	</div>
+	</hgroup>
 </template>
 
 <style scoped lang="scss">

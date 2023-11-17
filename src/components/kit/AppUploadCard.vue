@@ -66,8 +66,8 @@ function onUpload(e: Event) {
 
 <style scoped lang="scss">
 .upload {
-	width: 320px;
-	height: 320px;
+	width: 280px;
+	height: 280px;
 
 	position: relative;
 
@@ -101,10 +101,8 @@ function onUpload(e: Event) {
 		display: flex;
 		align-items: center;
 		justify-content: center;
+		background-image: url("data:image/svg+xml,%3csvg width='100%25' height='100%25' xmlns='http://www.w3.org/2000/svg'%3e%3crect width='100%25' height='100%25' fill='none' rx='20' ry='20' stroke='rgb(200,200,200)' stroke-width='3' stroke-dasharray='8%2c 20' stroke-dashoffset='27' stroke-linecap='square'/%3e%3c/svg%3e");
 
-		background: var(--color-base-bg);
-
-		border: 2px dashed rgba(14, 14, 14, 0.2);
 		border-radius: 20px;
 
 		z-index: 50;
@@ -114,6 +112,7 @@ function onUpload(e: Event) {
 		&[data-state='uploaded'] {
 			padding: 0;
 
+			background: transparent;
 			border: 2px solid rgba(14, 14, 14, 0.2);
 
 			box-shadow: 0px 34px 54px -10px rgba(0, 0, 0, 0.1);

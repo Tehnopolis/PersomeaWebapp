@@ -23,6 +23,7 @@ function startGeneration() {
 	body.append('src', inputImage.value);
 	body.append('dst', avatarImage.value);
 	fetch('http://188.246.224.82:8876/api/avatars/simple_swap', {
+		method: 'POST',
 		body
 	})
 		.then((resp) => resp.json())
@@ -38,8 +39,8 @@ function startGeneration() {
 			<!-- Step 1: Input -->
 			<template v-if="step === 1">
 				<AppHeading
-					tag="h2"
-					bubble-text="Этап 1/2"
+					:size="2"
+					tag="Этап 1/2"
 					text="
                         Первым делом тебе нужно загрузить твою фотографию.
                         На основе неё мы уже сгенерируем фотографию в выбранном образе.
@@ -62,8 +63,8 @@ function startGeneration() {
 			<!-- Step 2: Avatar -->
 			<template v-if="step === 2">
 				<AppHeading
-					tag="h2"
-					bubble-text="Этап 2/2"
+					:size="2"
+					tag="Этап 2/2"
 					text="
                         Теперь тебе остается лишь выбрать человека или же образ,
                         который ты хочешь попробовать на себе.
@@ -73,12 +74,12 @@ function startGeneration() {
 				</AppHeading>
 
 				<AppRow>
-					<AppButton color="outline" size="md" @click="step--">
+					<AppButton color="dark" size="md" @click="step--">
 						Назад
 					</AppButton>
 					<AppButton
 						v-if="!!avatarImage"
-						color="dark"
+						color="primary"
 						size="md"
 						@click="startGeneration"
 					>
@@ -91,7 +92,7 @@ function startGeneration() {
 			<!-- Step 3: Generating... -->
 			<template v-if="step === 3">
 				<AppHeading
-					tag="h2"
+					:size="2"
 					text="Генерируем фотографию, подожди немного"
 				>
 					Происходит магия...
