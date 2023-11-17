@@ -14,10 +14,21 @@ const inputImage: Ref<File | null> = ref(null);
 const avatarImage: Ref<File | null> = ref(null);
 
 function startGeneration() {
+	if (!inputImage.value || !avatarImage.value) return;
+
 	step.value++;
 
-	console.log('Изображение входное', inputImage.value);
-	console.log('Изображение аватара', avatarImage.value);
+	/* TODO: we should not send request here... */
+	const body = new FormData();
+	body.append('src', inputImage.value);
+	body.append('dst', avatarImage.value);
+	fetch('http://188.246.224.82:8876/api/avatars/simple_swap', {
+		body
+	})
+		.then((resp) => resp.json())
+		.then((data) => {
+			console.log('Got response', data);
+		});
 }
 </script>
 

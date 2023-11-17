@@ -20,7 +20,9 @@ import AppContainer from './kit/AppContainer.vue';
 	border-top: 1px solid rgba(14, 14, 14, 0.2);
 
 	&__text {
+		font-size: 14px;
 		font-weight: 460;
+
 		color: var(--color-base-fg2);
 	}
 }
