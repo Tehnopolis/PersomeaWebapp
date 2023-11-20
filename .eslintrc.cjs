@@ -19,7 +19,10 @@ module.exports = {
 	plugins: ['vue', 'prettier', '@typescript-eslint'],
 	rules: {
 		// Prettier
-		'prettier/prettier': ['error'],
+		'prettier/prettier': [
+			'error',
+			{ endOfLine: "auto" }
+		],
 		// Classic
 		'no-unused-vars': 'off',
 		'comma-dangle': ['error', 'never'],
