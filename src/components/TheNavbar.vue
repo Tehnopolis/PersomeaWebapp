@@ -6,7 +6,9 @@ import AppContainer from './kit/AppContainer.vue';
 <template>
 	<AppSection tag="nav" class="navbar">
 		<AppContainer>
-			<img src="/logo.svg" alt="Persomea" />
+			<RouterLink to="/">
+				<img src="/logo.svg" alt="Persomea" />
+			</RouterLink>
 		</AppContainer>
 	</AppSection>
 </template>

@@ -1,4 +1,5 @@
 <script setup lang="ts">
+import UploadIcon from '@/components/icons/UploadIcon.vue';
 import { Ref, ref } from 'vue';
 
 const props = defineProps<{
@@ -45,11 +46,7 @@ function onUpload(e: Event) {
 		/>
 		<div class="upload__mask" :data-state="state">
 			<template v-if="state === 'initial'">
-				<img
-					src="/icons/Upload.svg"
-					alt="Загрузить"
-					class="upload__mask_icon"
-				/>
+				<UploadIcon class="upload__mask_icon" />
 				<p class="upload__mask_text">Загрузить фото</p>
 			</template>
 			<template v-else>

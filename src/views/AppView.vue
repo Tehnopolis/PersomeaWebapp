@@ -4,32 +4,33 @@ import AppContainer from '@/components/kit/AppContainer.vue';
 import AppHeading from '@/components/kit/AppHeading.vue';
 import AppRow from '@/components/kit/AppRow.vue';
 import AppButton from '@/components/kit/AppButton.vue';
-import AppUploadCard from '@/components/kit/AppUploadCard.vue';
+import AppUploadImage from '@/components/kit/AppUploadImage.vue';
+import AppPreviewImage from '@/components/kit/AppPreviewImage.vue';
 import AppLoader from '@/components/kit/AppLoader.vue';
 import { Ref, ref } from 'vue';
+import { generateAvatar } from '../core/requests/generateAvatar';
 
 const step: Ref<1 | 2 | 3 | 4> = ref(1);
 
 const inputImage: Ref<File | null> = ref(null);
 const avatarImage: Ref<File | null> = ref(null);
+const outputImage: Ref<string | null> = ref(null);
 
-function startGeneration() {
+async function startGeneration() {
 	if (!inputImage.value || !avatarImage.value) return;
 
+	// Switch to loading step
 	step.value++;
 
-	/* TODO: we should not send request here... */
-	const body = new FormData();
-	body.append('src', inputImage.value);
-	body.append('dst', avatarImage.value);
-	fetch('http://188.246.224.82:8876/api/avatars/simple_swap', {
-		method: 'POST',
-		body
-	})
-		.then((resp) => resp.json())
-		.then((data) => {
-			console.log('Got response', data);
-		});
+	// Get generated output
+	const result = await generateAvatar({
+		input: inputImage.value,
+		avatar: avatarImage.value
+	});
+
+	// Switch to finished step
+	step.value++;
+	outputImage.value = result.result_url;
 }
 </script>
 
@@ -49,7 +50,7 @@ function startGeneration() {
 					Загрузи фотографию
 				</AppHeading>
 
-				<AppUploadCard v-model:modelValue="inputImage" />
+				<AppUploadImage v-model:modelValue="inputImage" />
 
 				<AppButton
 					v-if="!!inputImage"
@@ -87,7 +88,7 @@ function startGeneration() {
 					</AppButton>
 				</AppRow>
 
-				<AppUploadCard v-model:modelValue="avatarImage" />
+				<AppUploadImage v-model:modelValue="avatarImage" />
 			</template>
 			<!-- Step 3: Generating... -->
 			<template v-if="step === 3">
@@ -100,6 +101,18 @@ function startGeneration() {
 
 				<AppLoader />
 			</template>
+			<!-- Step 4: Generated! -->
+			<template v-if="step === 4">
+				<AppHeading
+					:size="2"
+					text="Теперь ты можешь поделиться результатом или скачать его."
+				>
+					Готово!
+				</AppHeading>
+
+				<AppPreviewImage :src="outputImage" alt="Результат" />
+			</template>
 		</AppContainer>
 	</AppSection>
 </template>
+../core/requests/generateAvatar
