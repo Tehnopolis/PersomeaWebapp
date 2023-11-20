@@ -40,7 +40,7 @@ function onUpload(e: Event) {
 		<input
 			class="upload__field"
 			type="file"
-			accept=".jpg,.png,.jpeg,.bmp,.tif,.tiff|image/*"
+			accept=".jpg,.jpeg"
 			@change="onUpload"
 		/>
 		<div class="upload__mask" :data-state="state">
