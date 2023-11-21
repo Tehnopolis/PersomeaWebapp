@@ -1,27 +1,42 @@
 <script setup lang="ts">
 import { ref } from 'vue';
 
-let modalRoot = ref();
+const modalRoot = ref();
 
 const hide = function () {
+	document.body.removeEventListener('keydown', escapeClose);
+
 	modalRoot.value.classList.add('hide');
 
 	setTimeout(() => {
 		modalRoot.value.classList.remove('hide');
 		modalRoot.value.classList.remove('show');
+		document.body.style.overflow = '';
 	}, 450);
+};
+
+const escapeClose = function (e: KeyboardEvent) {
+	if (e.key === 'Escape') hide();
 };
 
 const show = function () {
 	modalRoot.value.classList.add('show');
+	document.body.style.overflow = 'hidden';
+	document.body.addEventListener('keydown', escapeClose);
 };
 
 defineExpose({ show, hide });
 </script>
 
 <template>
-	<div ref="modalRoot" class="modal" tabindex="-1" role="dialog">
-		<div class="modal__window">
+	<div
+		ref="modalRoot"
+		class="modal"
+		tabindex="-1"
+		role="dialog"
+		@click="hide"
+	>
+		<div class="modal__window" @click="$event.stopPropagation()">
 			<div class="body">
 				<slot />
 			</div>

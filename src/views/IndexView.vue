@@ -10,7 +10,7 @@ import {
 } from '../components/panel';
 import { ref } from 'vue';
 
-let modal = ref();
+const modal = ref();
 
 const prosPanels: PanelConfiguration[] = [
 	{
