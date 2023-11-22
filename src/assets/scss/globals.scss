@@ -2,18 +2,25 @@
 	/*
 	 * Colors
 	 */
-	--color-base-bg: #fff;
-	--color-base-fg: #000;
-	--color-base-fg2: #121212;
-	--color-base-neutral: #f0f0f0;
+	--color-base-bg: var(--color-light-bg);
+	--color-base-fg: var(--color-light-fg);
+	--color-base-fg2: var(--color-light-fg2);
+	--color-base-fg3: var(--color-light-fg3);
+	--color-base-box: var(--color-light-box);
 
 	--color-light-bg: #fff;
 	--color-light-fg: #000;
-	--color-light-border: rgba(14, 14, 14, 0.2);
+	--color-light-fg2: #121212;
+	--color-light-fg3: #7b7b81;
+	--color-light-box: #f6f6f7;
+	--color-light-border: rgba(29, 23, 23, 0.2);
 	--color-light-hover-border: #0e0e0e;
 
 	--color-dark-bg: #000;
 	--color-dark-fg: #fff;
+	--color-dark-fg2: #e6e6e6;
+	--color-dark-fg3: #9e9e9e;
+	--color-dark-box: #272727;
 	--color-dark-hover-bg: #1d1d1d;
 
 	--color-primary-bg: #f06529;
@@ -23,10 +30,6 @@
 	--color-secondary-bg: #5951f2;
 	--color-secondary-hover-bg: #8781ff;
 	--color-secondary-fg: #fff;
-
-	--color-card-icon-bg: #f6f6f7;
-	--color-card-title: #121212;
-	--color-card-description: #7b7b81;
 
 	// RGB переменные чтобы в коде была возможность задавать прозрачность цвету
 	--color-info-bg: #2b68de;
@@ -41,6 +44,8 @@
 	--color-danger-bg2: #ea5931;
 	--color-danger-fg: #fff;
 	--color-danger-rgb: 255, 37, 37;
+
+	--color-secondary-rgb: 87, 79, 242;
 
 	--color-input-label: rgba(0, 0, 0, 0.2);
 	--color-input-border: rgba(14, 14, 14, 0.2);
@@ -76,5 +81,23 @@
 	/*
 	 * Other
 	 */
+	--modal-z-index: 1000;
 	--transition: 400ms ease;
+}
+
+:root,
+[data-theme='light'] {
+	--color-theme-bg: var(--color-light-bg);
+	--color-theme-fg: var(--color-light-fg);
+	--color-theme-fg2: var(--color-light-fg2);
+	--color-theme-fg3: var(--color-light-fg3);
+	--color-theme-box: var(--color-light-box);
+}
+
+[data-theme='dark'] {
+	--color-theme-bg: var(--color-dark-bg);
+	--color-theme-fg: var(--color-dark-fg);
+	--color-theme-fg2: var(--color-dark-fg2);
+	--color-theme-fg3: var(--color-dark-fg3);
+	--color-theme-box: var(--color-dark-box);
 }

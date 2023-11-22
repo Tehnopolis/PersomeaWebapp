@@ -69,7 +69,7 @@ function downloadPreview() {
 	border-radius: 20px;
 
 	&[data-state='fail'] {
-		background-color: var(--color-base-neutral);
+		background-color: var(--color-base-box);
 	}
 
 	&__alert {
