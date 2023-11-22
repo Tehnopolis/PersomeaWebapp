@@ -31,6 +31,8 @@ async function startGeneration() {
 	// Switch to finished step
 	step.value++;
 	outputImage.value = result.result_url;
+
+	console.log('Output image', outputImage.value);
 }
 </script>
 
@@ -50,8 +52,6 @@ async function startGeneration() {
 					Загрузи фотографию
 				</AppHeading>
 
-				<AppUploadImage v-model:modelValue="inputImage" />
-
 				<AppButton
 					v-if="!!inputImage"
 					color="dark"
@@ -60,6 +60,8 @@ async function startGeneration() {
 				>
 					Далее
 				</AppButton>
+
+				<AppUploadImage v-model:modelValue="inputImage" />
 			</template>
 			<!-- Step 2: Avatar -->
 			<template v-if="step === 2">
@@ -110,7 +112,7 @@ async function startGeneration() {
 					Готово!
 				</AppHeading>
 
-				<AppPreviewImage :src="outputImage" alt="Результат" />
+				<AppPreviewImage :image="outputImage" alt="Результат" />
 			</template>
 		</AppContainer>
 	</AppSection>

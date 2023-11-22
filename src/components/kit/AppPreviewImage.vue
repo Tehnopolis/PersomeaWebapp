@@ -3,15 +3,16 @@ import InfoIcon from '@/components/icons/InfoIcon.vue';
 import ShareIcon from '@/components/icons/ShareIcon.vue';
 import DownloadIcon from '@/components/icons/DownloadIcon.vue';
 import { shareData } from '../../core/helpers/shareData';
-import { downloadFile } from '../../core/helpers/downloadFile';
 
 const props = defineProps<{
-	src: string;
+	image?: string;
 	alt: string;
 }>();
 
 function sharePreview() {
-	shareData('Persomea', props.src).then((strategy) => {
+	if (!props.image) return;
+
+	shareData('Persomea', props.image).then((strategy) => {
 		if (strategy === 'clipboard_api') {
 			console.log('Copied to clipboard');
 
@@ -19,15 +20,34 @@ function sharePreview() {
 		}
 	});
 }
-
-function downloadPreview() {
-	downloadFile(props.src, 'PersomeaAvatar');
-}
 </script>
 
 <template>
-	<div class="preview" :data-state="!!src ? 'fail' : 'success'">
-		<template v-if="!!src">
+	<div
+		class="preview"
+		:data-state="typeof image === 'string' ? 'success' : 'fail'"
+	>
+		<template v-if="typeof image === 'string'">
+			<img class="preview__image" :src="image" :alt="alt" />
+
+			<div class="preview__buttons">
+				<button class="preview__buttons_button" @click="sharePreview">
+					<ShareIcon />
+					Поделиться
+				</button>
+				<a
+					:href="image"
+					download="persomea_generated.jpg"
+					target="_blank"
+					rel="noopener noreferrer"
+					class="preview__buttons_button"
+				>
+					<DownloadIcon />
+					Скачать
+				</a>
+			</div>
+		</template>
+		<template v-else>
 			<div class="preview__alert">
 				<InfoIcon class="preview__alert_icon" />
 				<p class="preview__alert_text">
@@ -35,30 +55,13 @@ function downloadPreview() {
 				</p>
 			</div>
 		</template>
-		<template v-else>
-			<img class="preview__image" :src="src" :alt="alt" />
-
-			<div class="preview__buttons">
-				<button class="preview__buttons_button" @click="sharePreview">
-					<ShareIcon />
-					Поделиться
-				</button>
-				<button
-					class="preview__buttons_button"
-					@click="downloadPreview"
-				>
-					<DownloadIcon />
-					Скачать
-				</button>
-			</div>
-		</template>
 	</div>
 </template>
 
 <style scoped lang="scss">
 .preview {
-	width: 280px;
-	height: 280px;
+	width: 300px;
+	height: 300px;
 
 	padding: 16px;
 
@@ -107,7 +110,7 @@ function downloadPreview() {
 
 		object-fit: cover;
 
-		background-color: var(--color-base-neutral);
+		background-color: var(--color-base-box);
 	}
 
 	&__buttons {
@@ -133,17 +136,19 @@ function downloadPreview() {
 
 			cursor: pointer;
 
-			background-color: rgba(0, 0, 0, 0.5);
+			background-color: rgba(0, 0, 0, 0.4);
 			backdrop-filter: blur(8px);
 
+			border: none;
+
 			color: white;
-			font-size: 14px;
+			font-size: 18px;
 			font-weight: 460;
 
 			& > img,
 			& > svg {
-				width: 20px;
-				height: 20px;
+				width: 24px;
+				height: 24px;
 			}
 		}
 	}
