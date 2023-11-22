@@ -73,12 +73,6 @@ defineExpose({ show: showModal, hide: hideModal });
 	</div>
 </template>
 
-<style>
-body:has(.modal.show) {
-	overflow: hidden;
-}
-</style>
-
 <style scoped lang="scss">
 .modal {
 	&__title {
@@ -127,15 +121,15 @@ body:has(.modal.show) {
 	&.show &__window {
 		@include keyframes(windowPopup) {
 			0% {
-				transform: scale(0);
+				transform: translateY(100vh);
 			}
 
 			80% {
-				transform: scale(1.1);
+				transform: translateY(-20px);
 			}
 
 			100% {
-				transform: scale(1);
+				transform: translateY(0);
 			}
 		}
 
@@ -145,11 +139,11 @@ body:has(.modal.show) {
 	&.hide &__window {
 		@include keyframes(windowClose) {
 			0% {
-				transform: scale(1);
+				transform: translateY(0);
 			}
 
 			100% {
-				transform: scale(0);
+				transform: translateY(100vh);
 			}
 		}
 
@@ -212,5 +206,11 @@ body:has(.modal.show) {
 			}
 		}
 	}
+}
+</style>
+
+<style>
+body:has(.modal.show) {
+	overflow: hidden;
 }
 </style>

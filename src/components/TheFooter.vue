@@ -7,7 +7,7 @@ import AppContainer from './kit/AppContainer.vue';
 	<AppSection tag="footer" class="footer">
 		<AppContainer>
 			<small class="footer__text">
-				© 2023 Persomea. All rights reserved
+				© 2023 Persomea. Все права защищены.
 			</small>
 		</AppContainer>
 	</AppSection>
@@ -23,7 +23,7 @@ import AppContainer from './kit/AppContainer.vue';
 		font-size: 14px;
 		font-weight: 460;
 
-		color: var(--color-base-fg2);
+		color: var(--color-base-fg3);
 	}
 }
 </style>
