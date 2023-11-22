@@ -1,9 +1,15 @@
 <script setup lang="ts">
 import { ref } from 'vue';
+import AppRow from './AppRow.vue';
+
+defineProps<{
+	title: string;
+	text?: string;
+}>();
 
 const modalRoot = ref();
 
-const hide = function () {
+function hideModal() {
 	document.body.removeEventListener('keydown', escapeClose);
 
 	modalRoot.value.classList.add('hide');
@@ -13,19 +19,18 @@ const hide = function () {
 		modalRoot.value.classList.remove('show');
 		document.body.style.overflow = '';
 	}, 450);
-};
-
-const escapeClose = function (e: KeyboardEvent) {
-	if (e.key === 'Escape') hide();
-};
-
-const show = function () {
+}
+function showModal() {
 	modalRoot.value.classList.add('show');
 	document.body.style.overflow = 'hidden';
 	document.body.addEventListener('keydown', escapeClose);
+}
+
+const escapeClose = function (e: KeyboardEvent) {
+	if (e.key === 'Escape') hideModal();
 };
 
-defineExpose({ show, hide });
+defineExpose({ show: showModal, hide: hideModal });
 </script>
 
 <template>
@@ -34,13 +39,22 @@ defineExpose({ show, hide });
 		class="modal"
 		tabindex="-1"
 		role="dialog"
-		@click="hide"
+		@click="hideModal"
 	>
 		<div class="modal__window" @click="$event.stopPropagation()">
-			<div class="body">
+			<div class="modal__window_body">
+				<AppRow direction="vertical">
+					<p class="modal__title">
+						{{ title }}
+					</p>
+					<p v-if="!!text" class="modal__text">
+						{{ text }}
+					</p>
+				</AppRow>
+
 				<slot />
 			</div>
-			<button class="close" @click="hide">
+			<button class="modal__window_close" @click="hideModal">
 				<svg
 					xmlns="http://www.w3.org/2000/svg"
 					fill="none"
@@ -65,13 +79,7 @@ body:has(.modal.show) {
 }
 </style>
 
-<style lang="scss">
-.modal .body .group {
-	display: flex;
-	flex-direction: column;
-	gap: 20px;
-}
-
+<style scoped lang="scss">
 .modal {
 	&__title {
 		font-size: var(--font-size-h3);
@@ -165,22 +173,7 @@ body:has(.modal.show) {
 			padding: 10px 70px;
 		}
 
-		.close {
-			position: absolute;
-			top: 28px;
-			right: 28px;
-			width: 28px;
-			height: 28px;
-			background: transparent;
-			transition: var(--transition);
-			cursor: pointer;
-
-			&:active {
-				transform: scale(0.8);
-			}
-		}
-
-		.body {
+		&_body {
 			display: flex;
 			flex-direction: column;
 			padding: 40px;
@@ -190,6 +183,32 @@ body:has(.modal.show) {
 
 			@media (min-width: 768px) {
 				padding: 96px 40px;
+			}
+		}
+
+		&_close {
+			width: 48px;
+			height: 48px;
+
+			padding: 8px;
+
+			position: absolute;
+			top: 28px;
+			right: 28px;
+
+			background: transparent;
+			cursor: pointer;
+
+			border-radius: 12px;
+
+			transition: var(--transition);
+			transition-property: background;
+
+			&:active {
+				transform: scale(0.8);
+			}
+			&:hover {
+				background: var(--color-light-box);
 			}
 		}
 	}

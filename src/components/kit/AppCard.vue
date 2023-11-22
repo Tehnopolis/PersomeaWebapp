@@ -23,15 +23,18 @@ defineProps<{
 	text-align: left;
 
 	&__icon-wrapper {
-		width: fit-content;
-		max-height: 48px;
-		max-width: 48px;
+		height: 48px;
+		width: 48px;
 
 		margin-bottom: 16px;
 
 		padding: 12px;
 
-		background: var(--color-card-icon-bg);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+
+		background: var(--color-theme-box);
 		opacity: 90%;
 
 		border-radius: 10px;
@@ -45,7 +48,7 @@ defineProps<{
 	&__title {
 		margin-bottom: 8px;
 
-		color: var(--color-card-title);
+		color: var(--color-theme-fg);
 
 		font-size: var(--font-size-text);
 		font-weight: 500;
@@ -54,11 +57,10 @@ defineProps<{
 	}
 
 	&__description {
-		color: var(--color-card-description);
+		color: var(--color-theme-fg3);
 
 		font-size: var(--font-size-base);
 		font-weight: 400;
-		line-height: 112.336%;
 	}
 }
 </style>

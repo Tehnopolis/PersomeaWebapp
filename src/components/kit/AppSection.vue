@@ -23,8 +23,11 @@ withDefaults(
 
 	display: flex;
 
+	background: var(--color-theme-bg);
+	color: var(--color-theme-fg);
+
 	@media (min-width: 768px) {
-		padding: 40px 20px;
+		padding: 120px 20px;
 	}
 }
 
@@ -33,14 +36,21 @@ footer.section {
 	padding: 20px;
 }
 
-main.section {
-	/* Fill screen (navbar, footer) */
-	min-height: calc(100vh - 67px - 60px);
+main.section,
+header.section {
 	height: max-content;
 
 	&:deep(.container) {
 		align-items: center;
 		justify-content: center;
 	}
+}
+main.section {
+	/* Fill screen (navbar, footer) */
+	min-height: calc(100vh - 67px - 60px);
+}
+header.section {
+	/* Fill screen (navbar, footer) */
+	min-height: calc(100vh - 67px);
 }
 </style>

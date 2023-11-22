@@ -57,6 +57,20 @@ defineProps<{
 			font-size: 20px;
 		}
 	}
+
+	&:deep(span) {
+		padding: 4px 8px;
+
+		margin-top: 8px;
+
+		display: inline-block;
+
+		background: rgba(var(--color-secondary-rgb), 0.15);
+		color: var(--color-secondary-bg);
+		border-color: var(--color-secondary-bg);
+
+		border-radius: 8px;
+	}
 }
 
 h1,
