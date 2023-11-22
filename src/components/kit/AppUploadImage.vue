@@ -2,6 +2,13 @@
 import UploadIcon from '@/components/icons/UploadIcon.vue';
 import { Ref, ref } from 'vue';
 
+const createURL = (file: File) => {
+	const binaryData = [file];
+	return window.URL.createObjectURL(
+		new Blob(binaryData, { type: 'application/zip' })
+	);
+};
+
 const props = defineProps<{
 	modelValue?: File;
 }>();
@@ -10,10 +17,10 @@ const emit = defineEmits<{
 }>();
 
 const state: Ref<'initial' | 'uploaded'> = ref(
-	props.modelValue ? 'uploaded' : 'initial'
+	!props.modelValue ? 'initial' : 'uploaded'
 );
 const preview: Ref<string> = ref(
-	props.modelValue ? URL.createObjectURL(props.modelValue) : ''
+	!props.modelValue ? '' : createURL(props.modelValue)
 );
 
 function onUpload(e: Event) {
@@ -28,7 +35,7 @@ function onUpload(e: Event) {
 	const file = e.target.files[0] as File;
 
 	// Load preview
-	preview.value = URL.createObjectURL(file);
+	preview.value = createURL(file);
 	state.value = 'uploaded';
 
 	// Emit event
@@ -56,6 +63,7 @@ function onUpload(e: Event) {
 					class="upload__mask_preview"
 					title="Заменить"
 				/>
+				<button class="upload__mask_button">Изменить</button>
 			</template>
 		</div>
 	</div>
@@ -93,6 +101,8 @@ function onUpload(e: Event) {
 		right: 0;
 		bottom: 0;
 
+		overflow: hidden;
+
 		padding: 20px;
 
 		display: flex;
@@ -110,7 +120,8 @@ function onUpload(e: Event) {
 			padding: 0;
 
 			background: transparent;
-			border: 2px solid rgba(14, 14, 14, 0.2);
+
+			border: none;
 
 			box-shadow: 0px 34px 54px -10px rgba(0, 0, 0, 0.1);
 
@@ -131,13 +142,31 @@ function onUpload(e: Event) {
 			font-size: 20px;
 			font-weight: 460;
 		}
+		&_button {
+			padding: 10px 18px;
+
+			position: absolute;
+			left: 50%;
+			bottom: 20px;
+			transform: translateX(-50%);
+
+			background: rgba(0, 0, 0, 0.3);
+			backdrop-filter: blur(6px);
+
+			color: var(--color-dark-fg);
+
+			font-size: 18px;
+			font-weight: 460;
+
+			border-radius: 100px;
+
+			pointer-events: none;
+		}
 		&_preview {
 			width: 100%;
 			height: 100%;
 
 			object-fit: cover;
-
-			border-radius: 20px;
 		}
 	}
 }
