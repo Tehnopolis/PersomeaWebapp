@@ -10,11 +10,15 @@ import AppSectionCard from '../components/kit/AppSectionCard.vue';
 import { ref } from 'vue';
 
 const modal = ref();
+
+function scrollTo(id: string) {
+	document.querySelector(`#${id}`)?.scrollIntoView({ behavior: 'smooth' });
+}
 </script>
 
 <template>
 	<AppSection tag="header">
-		<AppContainer style="gap: 0px">
+		<AppContainer>
 			<div class="cta">
 				<AppHeading
 					:size="1"
@@ -32,7 +36,11 @@ const modal = ref();
 						</AppButton>
 					</RouterLink>
 
-					<AppButton size="md" color="outline">
+					<AppButton
+						size="md"
+						color="outline"
+						@click="scrollTo('how-works')"
+					>
 						Как это работает?
 					</AppButton>
 				</AppRow>
@@ -56,7 +64,7 @@ const modal = ref();
 			</AppRow>
 		</AppContainer>
 	</AppSection>
-	<AppSection id="how-it-works" tag="section" data-theme="dark">
+	<AppSection id="how-works" tag="section" data-theme="dark">
 		<AppContainer>
 			<AppHeading
 				:size="2"
